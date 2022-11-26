@@ -12,7 +12,7 @@ ofstream g("data.out");
 
 vector < vector < pair < string, string> > > mat;
 bool stai = 1;
-int corans,eur,asia,amen,oce,afr,ames,wrongans;
+int corans, eur, asia, amen, oce, afr, ames, wrongans;
 
 char answer2[40];
 char answer[30];
@@ -40,19 +40,19 @@ void setup()
 
 void meniu_principal()
 {
-	cout  << "Apasa orice tasta pentru a incepe jocul\n";
+	cout << "Apasa orice tasta pentru a incepe jocul\n";
 	cout << "Apasa tasta 0 pentru a iesi din joc\n";
 	cin >> answer;
-	if (!answer)
+	int rasp = (int) answer[0] - '0';
+	if (rasp == 0)
 	{
 		exit(0);
-
 	}
 }
 
 void check2()
 {
-	if (j == 5 && i!=6)
+	if (j == 5 && i != 6)
 	{
 		i++;
 		j = 0;
@@ -60,54 +60,57 @@ void check2()
 
 	if (i == 6)
 	{
-	    cout << "Apasa tasta 0 pentru a inchide jocul\n";
-	    cout << "Apasa tasta 1 pentru a vedea procenturl raspunsurilor corecte\n";
-	    cout << "Apasa tasta 2 pentru a vedea rezultatul\n";
-        cin >> answer;
-        int rasp = (int) answer[0] - '0';
-	    if(rasp == 1)
-        {
-            if(wrongans+corans==30)
-            {
-                cout << "Europa:" << 20 * eur << "%" << '\n';
-                cout << "Asia:" << 20 * asia << "%" << '\n';
-                cout << "America de Nord:" << 20 * amen << "%" << '\n';
-                cout << "America de Sud:" << 20 * ames << "%" << '\n';
-                cout << "Oceania:" << 20 * oce << "%" << '\n';
-                cout << "Africa:" << 20 * afr << "%" << '\n';
-                check2();
-            }
-        }else if (rasp == 2){
-            if(wrongans+corans==30)
-            {
-                cout << "Ai obtinut punctajul de" << " " << corans << " " << "puncte" << '\n';
-                if(corans<15)
-                {
-                    cout << "Ai fost respins!" << '\n';
-                    check2();
-                }
-                else if(corans >= 15 && corans <= 19)
-                {
-                    cout << "Nivel Beginner" << '\n';
-                    check2();
-                }
-                else if(corans >= 20 && corans <= 24)
-                {
-                    cout << "Nivel Intermediate" << '\n';
-                    check2();
-                }
-                else if(corans >= 25)
-                {
-                    cout << "Nivel Professional" << '\n';
-                    check2();
-                }
-            }
-        }else if(rasp == 0)
-        {
-            exit(0);
-        }else{
-            cout << "Te rugam sa introduci un numar valid\n";
-        }
+		cout << "Apasa tasta 0 pentru a inchide jocul\n";
+		cout << "Apasa tasta 1 pentru a vedea procenturl raspunsurilor corecte\n";
+		cout << "Apasa tasta 2 pentru a vedea rezultatul\n";
+		cin >> answer;
+		int rasp = (int)answer[0] - '0';
+		if (rasp == 1)
+		{
+			if (wrongans + corans == 30)
+			{
+				cout << "Europa:" << 20 * eur << "%" << '\n';
+				cout << "Asia:" << 20 * asia << "%" << '\n';
+				cout << "America de Nord:" << 20 * amen << "%" << '\n';
+				cout << "America de Sud:" << 20 * ames << "%" << '\n';
+				cout << "Oceania:" << 20 * oce << "%" << '\n';
+				cout << "Africa:" << 20 * afr << "%" << '\n';
+				check2();
+			}
+		}
+		else if (rasp == 2) {
+			if (wrongans + corans == 30)
+			{
+				cout << "Ai obtinut punctajul de" << " " << corans << " " << "puncte" << '\n';
+				if (corans < 15)
+				{
+					cout << "Ai fost respins!" << '\n';
+					check2();
+				}
+				else if (corans >= 15 && corans <= 19)
+				{
+					cout << "Nivel Beginner" << '\n';
+					check2();
+				}
+				else if (corans >= 20 && corans <= 24)
+				{
+					cout << "Nivel Intermediate" << '\n';
+					check2();
+				}
+				else if (corans >= 25)
+				{
+					cout << "Nivel Professional" << '\n';
+					check2();
+				}
+			}
+		}
+		else if (rasp == 0)
+		{
+			exit(0);
+		}
+		else {
+			cout << "Te rugam sa introduci un numar valid\n";
+		}
 	}
 }
 
@@ -119,37 +122,42 @@ void meniu_raspuns()
 	cout << "Apasa tasta 4 pentru a vedea la cate tari ai raspuns gresit momentan\n";
 	cout << "Apasa tasta 5 pentru a vedea cate tari mai sunt\n";
 	cin >> answer;
-    int rasp = (int) answer[0] - '0';
-	if(rasp==5 || rasp==4 || rasp==3 || rasp==2 || rasp==1)
-    {
-        if(rasp == 1)
-        {
-        }else if(rasp == 2)
-        {
-            j++;
+	int rasp = (int)answer[0] - '0';
+	if (rasp == 5 || rasp == 4 || rasp == 3 || rasp == 2 || rasp == 1)
+	{
+		if (rasp == 1)
+		{
+		}
+		else if (rasp == 2)
+		{
+			j++;
 			wrongans++;
 			check2();
-        }else if(rasp == 3){
-			cout << corans<<'\n';
+		}
+		else if (rasp == 3) {
+			cout << corans << '\n';
 			meniu_raspuns();
-        }else if(rasp == 4)
-        {
-			cout << wrongans + 1 << '\n';
+		}
+		else if (rasp == 4)
+		{
+			cout << wrongans << '\n';
 			meniu_raspuns();
-        }else if (rasp == 5){
+		}
+		else if (rasp == 5) {
 			cout << 5 * 6 - wrongans - corans << '\n';
 			meniu_raspuns();
-        }
-	}else{
-        cout << "Te rugam sa introduci o valoare valida\n";
-        meniu_raspuns();
+		}
+	}
+	else {
+		cout << "Te rugam sa introduci o valoare valida\n";
+		meniu_raspuns();
 	}
 }
 
 void wrong_answer()
 {
 	cout << "Ai raspuns gresit la intrebare\n";
-    meniu_raspuns();
+	meniu_raspuns();
 
 
 }
@@ -158,11 +166,11 @@ void cerinta_1()
 {
 	while (stai)
 	{
-	    if(i==6 && j == 5)
-        {
-            check2();
-            exit(0);
-        }
+		if (i == 6 && j == 5)
+		{
+			check2();
+			exit(0);
+		}
 		cout << "Introdu capitala tarii : " << mat[i][j].first << '\n';
 		cin >> answer2;
 		for (int i = 0; i < strlen(answer2); i++)
@@ -174,22 +182,22 @@ void cerinta_1()
 			corans++;
 			cout << "Felicitari, ai raspuns corect\n";
 			j++;
-			if(i == 0)
+			if (i == 0)
 				eur++;
-			else if(i == 1)
+			else if (i == 1)
 				asia++;
-			else if(i == 2)
+			else if (i == 2)
 				amen++;
-			else if(i == 3)
+			else if (i == 3)
 				ames++;
-			else if(i == 4)
+			else if (i == 4)
 				oce++;
-			else if(i == 5)
+			else if (i == 5)
 				afr++;
 			check2();
-        }
-            else {
-                wrong_answer();
+		}
+		else {
+			wrong_answer();
 		}
 	}
 }
